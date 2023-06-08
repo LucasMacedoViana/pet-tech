@@ -1,22 +1,22 @@
 package br.com.fiap.pettech.dominio.produto.entitie;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class Produto {
-        private UUID id;
-        private String nome;
-        private String descricao;
-        private String urlImagem;
-        private double preco;
+    private UUID id;
+    private String nome;
+    private String descricao;
+    private String urlImage;
+    private double preco;
 
-        public Produto() {}
+    public Produto() {
+    }
 
-    public Produto(UUID id, String nome, String descricao, String urlImagem, double preco) {
-        this.id = id;
+    public Produto(String nome, String descricao, String urlImage, double preco) {
+        this.id = UUID.randomUUID();
         this.nome = nome;
         this.descricao = descricao;
-        this.urlImagem = urlImagem;
+        this.urlImage = urlImage;
         this.preco = preco;
     }
 
@@ -44,12 +44,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public String getUrlImagem() {
-        return urlImagem;
+    public String getUrlImage() {
+        return urlImage;
     }
 
-    public void setUrlImagem(String urlImagem) {
-        this.urlImagem = urlImagem;
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
     public double getPreco() {
@@ -61,26 +61,28 @@ public class Produto {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Produto produto = (Produto) o;
-        return Objects.equals(id, produto.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
     public String toString() {
         return "Produto{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", urlImagem='" + urlImagem + '\'' +
+                ", urlImage='" + urlImage + '\'' +
                 ", preco=" + preco +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Produto produto = (Produto) o;
+
+        return id.equals(produto.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }
