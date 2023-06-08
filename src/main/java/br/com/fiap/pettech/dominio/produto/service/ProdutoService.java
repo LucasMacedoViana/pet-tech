@@ -13,7 +13,6 @@ import java.util.UUID;
 @Service
 public class ProdutoService {
     @Autowired
-    @Qualifier("produtoRepository")
     private IProdutoRepository produtoRepository;
 
     public Collection<Produto> findAll() {
@@ -29,16 +28,16 @@ public class ProdutoService {
         return produtoSaved;
     }
 
-    public Optional<Produto> update(UUID id, Produto produto) {
-        Optional<Produto> BuscarProduto = this.findById(id);
-        if (BuscarProduto.isPresent()) {
-            produtoRepository.update(id, produto);
-            return Optional.of(produto);
-        }
-        return Optional.empty();
-    }
-
-    public void delete(UUID id) {
-        produtoRepository.delete(id);
-    }
+//    public Optional<Produto> update(UUID id, Produto produto) {
+//        Optional<Produto> BuscarProduto = this.findById(id);
+//        if (BuscarProduto.isPresent()) {
+//            produtoRepository.update(id, produto);
+//            return Optional.of(produto);
+//        }
+//        return Optional.empty();
+//    }
+//
+//    public void delete(UUID id) {
+//        produtoRepository.delete(id);
+//    }
 }
