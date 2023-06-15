@@ -24,7 +24,7 @@ public class ProdutiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Produto>> findById(@PathVariable UUID id) {
+    public ResponseEntity<Produto> findById(@PathVariable UUID id) {
         var produto = produtoService.findById(id);
         return ResponseEntity.ok(produto);
     }
@@ -36,15 +36,15 @@ public class ProdutiController {
         return ResponseEntity.created(uri).body(produtoSaved);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Optional<Produto>> update(@PathVariable UUID id, @RequestBody Produto produto) {
-//        var produtoUpdated = produtoService.update(id, produto);
-//        return ResponseEntity.ok(produtoUpdated);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> delete(@PathVariable UUID id) {
-//        produtoService.delete(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> update(@PathVariable UUID id, @RequestBody Produto produto) {
+        var produtoUpdated = produtoService.update(id, produto);
+        return ResponseEntity.ok(produtoUpdated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        produtoService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
