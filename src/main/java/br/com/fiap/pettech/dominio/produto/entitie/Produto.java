@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.UUID;
 @Entity
-@Table(name = "td_produto")
+@Table(name = "tb_produto")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
